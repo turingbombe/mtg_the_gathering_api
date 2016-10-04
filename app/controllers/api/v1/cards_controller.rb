@@ -1,9 +1,9 @@
 module Api
   module V1
     class CardsController < ApplicationController
-      
+
     	def index
-    		render json: Card.all
+    		render json: Card.take(50)
     	end
 
   		def show
