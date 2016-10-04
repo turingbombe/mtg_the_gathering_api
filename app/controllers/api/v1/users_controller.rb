@@ -20,7 +20,7 @@ module Api
 					@user.destroy
 					#render json:
 				else
-					render json: {"You must be logged into your account to delete"} 
+					render json: "You must be logged into your account to delete"
 				end
 			end
 
