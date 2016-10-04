@@ -3,7 +3,7 @@ module Api
     class CardSetsController < ApplicationController
 
     	def index
-    		render json: CardSet.all
+    		render json: CardSet.all.includes(:cards)
     	end
 
   		def show
