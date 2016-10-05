@@ -3,8 +3,10 @@ module Api
 		class UsersController < ApplicationController
 			def create
 				user = User.new(user_params)
+				user.collection = Collection.create(name: "Gathering #{user.id}")
 				if user.save
-					render json: user
+					token = Auth.issue({id: user.id})
+					render json: {jwt: token, user: user}
 				else
 					render json: user.errors, status: 500
 				end
@@ -31,7 +33,7 @@ module Api
 			end
 
 			def user_params
-				params.require(:user).permit(:first_name,:last_name, :email, :password)
+				params.require(:user).permit(:first_name,:last_name, :email, :password, :password_confirmation)
 			end
 		end
 	end
