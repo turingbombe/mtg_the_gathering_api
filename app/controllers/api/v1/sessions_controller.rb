@@ -4,10 +4,11 @@ module Api
     	skip_before_action :authenticate
 
     	def create
+
     		user = User.find_by(email: auth_params[:email])
     		if user.authenticate(auth_params[:password])
     			token = Auth.issue({id: user.id})
-    			render json: {jwt:token}
+    			render json: {jwt:token, user_id: user.id}
     		else
     			render json: {error: "could not authenticate this user"}
     		end

@@ -1,6 +1,11 @@
 module Api
 	module V1
 		class UsersController < ApplicationController
+			skip_before_action :authenticate
+			def index
+				render json: User.all
+			end
+
 			def create
 				user = User.new(user_params)
 				user.collection = Collection.create(name: "Gathering #{user.id}")
