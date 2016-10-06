@@ -3,12 +3,12 @@ module Api
 		class UsersController < ApplicationController
 			skip_before_action :authenticate
 			def index
-				render json: User.all
+				render json: User.all.includes(:collection)
 			end
 
 			def create
 				user = User.new(user_params)
-				user.collection = Collection.create(name: "Gathering #{user.id}")
+				user.collection = Collection.create(name: "Gathering #{user.first_name}")
 				if user.save
 					token = Auth.issue({id: user.id})
 					render json: {jwt: token, user: user}
