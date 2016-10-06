@@ -7,14 +7,14 @@ class CreateCards < ActiveRecord::Migration[5.0]
       t.text :colors, array:true, default: []
       t.string :flavor
       t.string :image_url
-      t.string :mana_cost
+      t.text :mana_cost, array:true, default: []
       t.string :name
       t.string :number
       t.string :original_text
       t.string :original_type
       t.string :power
       t.text :printings, array:true, default: []
-      t.string :rarity      
+      t.string :rarity
       t.string :set
       t.string :set_name
       t.text :subtypes, array:true, default: []

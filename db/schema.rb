@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20161004165246) do
     t.text     "colors",        default: [],              array: true
     t.string   "flavor"
     t.string   "image_url"
-    t.string   "mana_cost"
+    t.text     "mana_cost",     default: [],              array: true
     t.string   "name"
     t.string   "number"
     t.string   "original_text"
