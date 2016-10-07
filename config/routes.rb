@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 			resources :card_sets
 			resources :sessions
 			resources :collections
+			resources :ownerships
 		end
 	end
 end
