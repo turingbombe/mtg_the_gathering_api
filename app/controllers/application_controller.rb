@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
 
 	def current_user
 	    if auth_present?
-	      user = User.find(auth["user"])
+	      user = User.find(auth["id"])
 	      if user
 	        @current_user ||= user
 	      end
@@ -15,15 +15,15 @@ class ApplicationController < ActionController::API
 	end
 	
 	  def authenticate
-	    render json: {error: "unauthorized"}, status: 404 
-	      unless logged_in?
-	      end
+		if !logged_in?
+			render json: {error: "unauthorized"}, status: 404
+		end
 	  end	
 
 	private
 
 	def token
-      request.env["HTTP_AUTHORIZATION"].scan(/Bearer(.*)$/).flatten.last
+      request.env["HTTP_AUTHORIZATION"].scan(/Bearer(.*)$/).flatten.last.strip
     end
 
     def auth
