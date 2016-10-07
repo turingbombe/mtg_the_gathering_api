@@ -1,7 +1,18 @@
 file = File.read(Rails.root.join("db", "seed_data", "AllSets-x.json"))
-cardsets = JSON.parse(file)
 
-cardsets.each do |setcode, setdata|
+filtered_cardsets = JSON.parse(file).delete_if do |setcode, setdata|
+	setcode[0] == 'p'||
+	setdata["name"] == "Rivals Quick Start Set" ||
+	setdata["name"] == "Multiverse Gift Box" ||
+	setdata["name"] == "Introductory Two-Player Set" ||
+	setdata["name"] == "Deckmasters" ||
+	setdata["name"] == "Coldsnap Theme Decks" ||
+	setdata["name"] == "Clash Pack"
+end
+
+
+
+filtered_cardsets.each do |setcode, setdata|
 
 	cardset = CardSet.create(code: setdata["code"], name: setdata["name"], release_date: setdata["release_date"])
 
