@@ -23,6 +23,10 @@ filtered_cardsets.each do |setcode, setdata|
 			msplit = ""
 		end
 
+		if card["cmc"].to_i > 0 && card["colors"] == nil
+			card["colors"] = ["Colorless"]
+		end
+
 		Card.create(
 		multiverse_id: card["multiverseid"],
 		# artist: card["artist"],
