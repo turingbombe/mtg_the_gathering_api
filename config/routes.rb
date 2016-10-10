@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 			resources :sessions
 			resources :collections
 			resources :ownerships
+			resources :searches
 		end
 	end
 end
