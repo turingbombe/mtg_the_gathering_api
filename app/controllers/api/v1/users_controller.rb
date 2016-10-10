@@ -9,6 +9,7 @@ module Api
 			def create
 				user = User.new(user_params)
 				user.collection = Collection.create(name: "Gathering #{user.first_name}")
+				user.collection.decks << Deck.create(name: "Your first deck", description: "An empty deck to get you started!")
 				if user.save
 					token = Auth.issue({id: user.id})
 					render json: {jwt: token, user: user}
