@@ -5,7 +5,11 @@ module Api
 
   		def create
         card = Card.find_by(name: search_params[:search])
-  		  render json: card
+        if card
+  		    render json: card
+        else
+          render json: {errors: "card not found"}
+        end
   		end
 
       private
