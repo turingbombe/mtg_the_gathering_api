@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 			resources :collections
 			resources :ownerships
 			resources :searches
+			resources :card_decks
 		end
 	end
 end
