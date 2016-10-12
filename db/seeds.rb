@@ -7,7 +7,10 @@ filtered_cardsets = JSON.parse(file).delete_if do |setcode, setdata|
 	setdata["name"] == "Introductory Two-Player Set" ||
 	setdata["name"] == "Deckmasters" ||
 	setdata["name"] == "Coldsnap Theme Decks" ||
-	setdata["name"] == "Clash Pack"
+	setdata["name"] == "Clash Pack" ||
+	setdata["name"] == "Collector's Edition" ||
+	setdata["name"] == "International Collector's Edition"
+
 end
 
 

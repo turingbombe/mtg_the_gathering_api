@@ -3,7 +3,8 @@ module Api
     class CardsController < ApplicationController
       skip_before_action :authenticate
     	def index
-    		render json: Card.take(50)
+        cards = Card.order("RANDOM()").first(25)
+    		render json: cards
     	end
 
   		def show
