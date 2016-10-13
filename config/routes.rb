@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 			resources :ownerships
 			resources :searches
 			resources :card_decks
+			resources :decks
 		end
 	end
 end
