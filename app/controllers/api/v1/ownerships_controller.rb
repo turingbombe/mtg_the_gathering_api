@@ -3,13 +3,18 @@ module Api
 		class OwnershipsController < ApplicationController
 			def show
 				render json: User.find(params["id"]).collection
-			end			
+			end
 
-			def create 
+			def create
 				@current_user.collection.cards << Card.find(params["card_id"])
+				render json: @current_user.collection
+			end
+
+			def update
+				@current_user.collection.cards.destroy(Card.find(params["card_id"]))
 				render json: @current_user.collection
 			end
 
 		end
 	end
-end	
+end
